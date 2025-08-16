@@ -6,23 +6,19 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4py7o"]
 albedo_texture = ExtResource("1_1yae0")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_l2lj7"]
-custom_aabb = AABB(10, 0, 0, 0, 0, 0)
-uv2_padding = 2.59
-subdivide_width = 2
-subdivide_depth = 1
+[sub_resource type="PlaneMesh" id="PlaneMesh_e0seo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_47jvq"]
 
 [node name="Start" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.497242, 0.418406, -0.642455)
+transform = Transform3D(1000, 0, 0, 0, 1, 0, 0, 0, 1000, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_4py7o")
 lod_bias = 1.87
 gi_mode = 2
 gi_lightmap_scale = 1
-mesh = SubResource("PlaneMesh_l2lj7")
+mesh = SubResource("PlaneMesh_e0seo")
 surface_material_override/0 = SubResource("ShaderMaterial_47jvq")
 
 [node name="Car" parent="." instance=ExtResource("2_geg53")]
