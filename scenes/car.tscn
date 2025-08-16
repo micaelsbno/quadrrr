@@ -1,31 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://buqwqptkifgju"]
+[gd_scene load_steps=6 format=3 uid="uid://buqwqptkifgju"]
 
 [ext_resource type="PackedScene" uid="uid://dyrif4nv6eesd" path="res://imports/blender/LowPolyCars.glb" id="1_at8mn"]
-[ext_resource type="Script" uid="uid://by58y6flebj5u" path="res://scripts/car_controller.gd" id="2_xk4r2"]
+[ext_resource type="Script" path="res://scenes/car.gd" id="1_v1ioc"]
+[ext_resource type="Script" path="res://scripts/car_controller.gd" id="2_xk4r2"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8yjxv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u8v3d"]
 size = Vector3(2, 0.5, 4)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8yjxv"]
-friction = 1.0
-bounce = 0.0
-
 [node name="Car" type="Node3D"]
+script = ExtResource("1_v1ioc")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mass = 1000.0
 physics_material_override = SubResource("PhysicsMaterial_8yjxv")
 gravity_scale = 3.0
-max_contacts_reported = 4
-contact_monitor = true
 can_sleep = false
+contact_monitor = true
+max_contacts_reported = 4
 linear_damp = 1.0
 angular_damp = 3.0
 script = ExtResource("2_xk4r2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_u8v3d")
 
 [node name="LowPolyCars" parent="RigidBody3D" instance=ExtResource("1_at8mn")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 8, 12)
+current = true
