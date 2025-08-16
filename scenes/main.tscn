@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://rqqskir33dnn"]
+[gd_scene load_steps=11 format=3 uid="uid://rqqskir33dnn"]
 
+[ext_resource type="Texture2D" uid="uid://bo3gt5lhj1k4e" path="res://img/grass.png" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://buqwqptkifgju" path="res://scenes/car.tscn" id="1_2e4v3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p8n4r"]
@@ -18,6 +19,9 @@ glow_enabled = true
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ground"]
 friction = 0.5
 bounce = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sugp2"]
+albedo_texture = ExtResource("1_0wfyh")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8p4yl"]
 size = Vector2(50, 50)
@@ -42,6 +46,7 @@ shadow_enabled = true
 physics_material_override = SubResource("PhysicsMaterial_ground")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+material_override = SubResource("StandardMaterial3D_sugp2")
 mesh = SubResource("PlaneMesh_8p4yl")
 surface_material_override/0 = SubResource("StandardMaterial3D_q2mj3")
 
