@@ -17,17 +17,19 @@ func _ready():
 	axis_lock_angular_z = true
 
 func _physics_process(delta):
-	# Get input
-	var forward = Input.get_action_strength("car_forward")
-	var backward = Input.get_action_strength("car_backward")
-	var left = Input.get_action_strength("car_left")
-	var right = Input.get_action_strength("car_right")
+	# Get input for forward/backward movement (using left/right keys)
+	var left_input = Input.get_action_strength("car_left")
+	var right_input = Input.get_action_strength("car_right")
 	
-	# Calculate acceleration
+	# Get input for steering (using up/down keys)
+	var up_input = Input.get_action_strength("car_forward")
+	var down_input = Input.get_action_strength("car_backward")
+	
+	# Calculate forward/backward movement
 	var target_speed = 0.0
-	if forward > 0:
+	if right_input > 0:  # Right key moves forward
 		target_speed = max_speed
-	elif backward > 0:
+	elif left_input > 0:  # Left key moves backward
 		target_speed = -max_speed * 0.5  # Reverse is slower
 	
 	# Apply acceleration/deceleration
@@ -46,8 +48,8 @@ func _physics_process(delta):
 		# Calculate velocity
 		linear_velocity = forward_dir * current_speed
 		
-		# Handle steering
-		var steering_input = right - left
+		# Handle steering using up/down keys
+		var steering_input = up_input - down_input  # Up steers right, Down steers left
 		if abs(steering_input) > 0:
 			steering = move_toward(steering, steering_input * steering_limit, steering_speed * delta)
 		else:
@@ -58,10 +60,10 @@ func _physics_process(delta):
 			rotate_y(steering * delta * (current_speed / max_speed))
 	
 	# Debug output
-	if forward > 0 or backward > 0:
+	if right_input > 0 or left_input > 0:
 		print("Speed: ", current_speed)
 		print("Velocity: ", linear_velocity)
 		print("Position: ", global_position)
-		print("Forward input: ", forward)
-		print("Backward input: ", backward)
+		print("Forward input: ", right_input)
+		print("Backward input: ", left_input)
 		print("Steering: ", steering)
