@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dyrif4nv6eesd"
-path="res://.godot/imported/LowPolyCars.glb-d80352eaeab0817bade30d12e62cab82.scn"
+path="res://.godot/imported/LowPolyCars.glb-945514c6fcdfa85dc92b4ece1ba42880.scn"
 
 [deps]
 
-source_file="res://scenes/LowPolyCars.glb"
-dest_files=["res://.godot/imported/LowPolyCars.glb-d80352eaeab0817bade30d12e62cab82.scn"]
+source_file="res://imports/blender/LowPolyCars.glb"
+dest_files=["res://.godot/imported/LowPolyCars.glb-945514c6fcdfa85dc92b4ece1ba42880.scn"]
 
 [params]
 

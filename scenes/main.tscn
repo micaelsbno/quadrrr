@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4mad5g6r8yw7"]
+
+[ext_resource type="PackedScene" uid="uid://buqwqptkifgju" path="res://scenes/car.tscn" id="1_2e4v3"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p8n4r"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_j26j8"]
+sky_material = SubResource("ProceduralSkyMaterial_p8n4r")
+
+[sub_resource type="Environment" id="Environment_vxn4p"]
+background_mode = 2
+sky = SubResource("Sky_j26j8")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8p4yl"]
+size = Vector2(50, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q2mj3"]
+albedo_color = Color(0.321569, 0.321569, 0.321569, 1)
+roughness = 0.8
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ht3k5"]
+size = Vector3(50, 0.1, 50)
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vxn4p")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_8p4yl")
+surface_material_override/0 = SubResource("StandardMaterial3D_q2mj3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+shape = SubResource("BoxShape3D_ht3k5")
+
+[node name="Car" parent="." instance=ExtResource("1_2e4v3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 8, 12)
+current = true
