@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4mad5g6r8yw7"]
+[gd_scene load_steps=9 format=3 uid="uid://rqqskir33dnn"]
 
 [ext_resource type="PackedScene" uid="uid://buqwqptkifgju" path="res://scenes/car.tscn" id="1_2e4v3"]
 
@@ -14,6 +14,10 @@ background_mode = 2
 sky = SubResource("Sky_j26j8")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ground"]
+friction = 0.5
+bounce = 0.1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8p4yl"]
 size = Vector2(50, 50)
@@ -35,6 +39,7 @@ transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75
 shadow_enabled = true
 
 [node name="Ground" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_ground")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("PlaneMesh_8p4yl")
@@ -45,7 +50,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
 shape = SubResource("BoxShape3D_ht3k5")
 
 [node name="Car" parent="." instance=ExtResource("1_2e4v3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 8, 12)
