@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://buqwqptkifgju"]
+
+[ext_resource type="PackedScene" uid="uid://biamaqbat7m6w" path="res://scenes/LowPolyCars.blend" id="1_at8mn"]
+
+[node name="Car" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="LowPolyCars" parent="." instance=ExtResource("1_at8mn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.167887, 0, 1.00607)

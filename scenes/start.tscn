@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://314dgi1yjeq0"]
+
+[ext_resource type="Texture2D" uid="uid://bo3gt5lhj1k4e" path="res://img/grass.png" id="1_1yae0"]
+[ext_resource type="PackedScene" uid="uid://buqwqptkifgju" path="res://scenes/car.tscn" id="2_geg53"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4py7o"]
+albedo_texture = ExtResource("1_1yae0")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l2lj7"]
+custom_aabb = AABB(10, 0, 0, 0, 0, 0)
+uv2_padding = 2.59
+subdivide_width = 2
+subdivide_depth = 1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_47jvq"]
+
+[node name="Start" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -0.497242, 0.418406, -0.642455)
+material_override = SubResource("StandardMaterial3D_4py7o")
+lod_bias = 1.87
+gi_mode = 2
+gi_lightmap_scale = 1
+mesh = SubResource("PlaneMesh_l2lj7")
+surface_material_override/0 = SubResource("ShaderMaterial_47jvq")
+
+[node name="Car" parent="." instance=ExtResource("2_geg53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13382, 0, 0.0324906)
