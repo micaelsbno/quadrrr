@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://buqwqptkifgju"]
 
-[ext_resource type="PackedScene" uid="uid://biamaqbat7m6w" path="res://scenes/LowPolyCars.blend" id="1_at8mn"]
+[ext_resource type="PackedScene" uid="uid://biamaqbat7m6w" path="res://imports/blender/LowPolyCars.blend" id="1_at8mn"]
 
 [node name="Car" type="Node3D"]
 
