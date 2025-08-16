@@ -22,4 +22,4 @@ mesh = SubResource("PlaneMesh_e0seo")
 surface_material_override/0 = SubResource("ShaderMaterial_47jvq")
 
 [node name="Car" parent="." instance=ExtResource("2_geg53")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13382, 0, 0.0324906)
+transform = Transform3D(1, 0, 0, 0, -0.995159, 0.0982776, 0, -0.0982776, -0.995159, -1.13382, 2.43772, 0.668025)
